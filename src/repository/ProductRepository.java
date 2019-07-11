@@ -64,6 +64,7 @@ public class ProductRepository implements GeneralRepository<Product> {
             }
             listProduct[listProduct.length - 1] = null;
             isDeleted = true;
+            size--;
         }
         return isDeleted;
     }
@@ -78,7 +79,7 @@ public class ProductRepository implements GeneralRepository<Product> {
                 }
             }
         }
-        if(index!=-1) {
+        if (index != -1) {
             return listProduct[index];
         } else
             return null;
