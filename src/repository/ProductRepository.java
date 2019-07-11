@@ -4,18 +4,11 @@ import model.Product;
 
 public class ProductRepository implements GeneralRepository<Product> {
     private Product[] listProduct = new Product[20];
-    public int size = 3;
+    private int size = 0;
 
     public int getSize() {
         return size;
     }
-
-    {
-        listProduct[0] = new Product(1, "Iphone", 200, "mobile");
-        listProduct[1] = new Product(2, "Samsung", 300, "mobile");
-        listProduct[2] = new Product(3, "OPPO", 400, "mobile");
-    }
-
     @Override
     public Product[] findAll() {
         return listProduct;

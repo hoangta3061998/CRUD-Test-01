@@ -35,4 +35,7 @@ public class ProductService implements GeneralService<Product> {
     public void sortByPrice() {
         productRepository.sortByPrice();
     }
+    public int getSize(){
+        return productRepository.getSize();
+    }
 }

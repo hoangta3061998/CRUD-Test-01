@@ -15,8 +15,13 @@ public class Main {
             switch (choice) {
                 case 1:
                     Product[] list = productController.findAll();
+                    if (productController.getSize() == 0) {
+                        System.out.println("Khong co san pham nao");
+                    }
                     for (int i = 0; i < list.length - 1; i++) {
                         if (list[i] != null) {
+                            System.out.println("\n");
+                            System.out.println("-----Danh sach san pham-----");
                             System.out.printf("%d \t %s \t %f \t %s ", list[i].getId(), list[i].getName(), list[i].getPrice(), list[i].getDescription());
                             System.out.println("\n");
                         }
@@ -78,7 +83,9 @@ public class Main {
                     String name = scanner.nextLine();
                     Product product = productController.findByName(name);
                     if (product != null) {
+                        System.out.println("-------Ket qua-----------");
                         System.out.printf("%d \t %s \t %f \t %s ", product.getId(), product.getName(), product.getPrice(), product.getDescription());
+                        System.out.println("-------------------------");
                     } else {
                         System.out.println("Khong tim thay");
                     }

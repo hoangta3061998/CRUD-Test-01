@@ -29,4 +29,7 @@ public class ProductController {
     public void sortByPrice() {
         productService.sortByPrice();
     }
+    public int getSize(){
+        return productService.getSize();
+    }
 }
