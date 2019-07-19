@@ -28,20 +28,11 @@ public class Main {
                     }
                     break;
                 case 2: {
-                    System.out.println("Nhap id:");
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.println("Nhap ten:");
-                    String name = scanner.nextLine();
-                    System.out.println("Nhap gia:");
-                    float price = scanner.nextFloat();
-                    scanner.nextLine();
-                    System.out.println("Nhap mo ta:");
-                    String description = scanner.nextLine();
-                    Product product = new Product(id, name, price, description);
-                    if (productController.add(product) == -2) {
+                    Product product = getInput();
+                    int resultAdd = productController.add(product);
+                    if (resultAdd == -2) {
                         System.out.println("San pham da ton tai");
-                    } else if (productController.add(product) == -1) {
+                    } else if (resultAdd == -1) {
                         System.out.println("Danh sach da day");
                     } else {
                         System.out.println("Them thanh cong");
@@ -49,18 +40,10 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    System.out.println("Nhap id:");
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.println("Nhap ten:");
-                    String name = scanner.nextLine();
-                    System.out.println("Nhap gia:");
-                    float price = scanner.nextFloat();
-                    scanner.nextLine();
-                    System.out.println("Nhap mo ta:");
-                    String description = scanner.nextLine();
-                    Product product = new Product(id, name, price, description);
-                    if (productController.editById(id, product)) {
+                    Product product = getInput();
+                    int id = product.getId();
+                    boolean resultEdit = productController.editById(id, product);
+                    if (resultEdit) {
                         System.out.println("Sua thanh cong");
                     } else {
                         System.out.println("San pham khong ton tai");
@@ -71,7 +54,8 @@ public class Main {
                     System.out.println("Nhap id san pham:");
                     int id = scanner.nextInt();
                     scanner.nextLine();
-                    if (productController.deleteById(id)) {
+                    boolean resultDelete = productController.deleteById(id);
+                    if (resultDelete) {
                         System.out.println("Xoa thanh cong");
                     } else {
                         System.out.println("San pham khong ton tai");
@@ -103,7 +87,7 @@ public class Main {
         } while (choice != 0);
     }
 
-    public static void displayMenu() {
+    private static void displayMenu() {
         System.out.println("\n");
         System.out.println("----------------------------");
         System.out.println("1.Hien thi danh sach san pham");
@@ -114,5 +98,20 @@ public class Main {
         System.out.println("6.Sap xep san pham");
         System.out.println("7.Thoat");
         System.out.println("Nhap vao lua chon:");
+    }
+    private static Product getInput(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhap id:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Nhap ten:");
+        String name = scanner.nextLine();
+        System.out.println("Nhap gia:");
+        float price = scanner.nextFloat();
+        scanner.nextLine();
+        System.out.println("Nhap mo ta:");
+        String description = scanner.nextLine();
+        Product product = new Product(id,name,price,description);
+        return product;
     }
 }

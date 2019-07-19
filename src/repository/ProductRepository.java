@@ -9,6 +9,7 @@ public class ProductRepository implements GeneralRepository<Product> {
     public int getSize() {
         return size;
     }
+
     @Override
     public Product[] findAll() {
         return listProduct;
@@ -73,9 +74,10 @@ public class ProductRepository implements GeneralRepository<Product> {
             }
         }
         if (index != -1) {
-            return listProduct[index];
-        } else
-            return null;
+            Product product = listProduct[index];
+            return product;
+        }
+        return null;
     }
 
     @Override
